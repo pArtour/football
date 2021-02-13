@@ -15,10 +15,6 @@ import Breadcrumbs from "react-router-dynamic-breadcrumbs";
 import routes from "../Breadcrumbs/routes";
 
 const { Text } = Typography;
-
-// Сделать фильтрацию по имени и году
-// Сохранять все в get параматрах чтобы при обновлении всё сохранялось
-
 const filterLeagues = (year, leagueName, leagueArr) => {
   if (!leagueName.length && !year.length) return leagueArr;
   if (year.length && leagueName.length) {
