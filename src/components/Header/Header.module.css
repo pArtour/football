@@ -1,0 +1,23 @@
+.Header {
+    display: flex;
+    padding: 0 24px;
+    background: none;
+    border-bottom: 1px solid #eee;
+}
+.Title {
+    display: flex;
+    align-items: center;
+    margin-right: 35px;
+    color: #000000;
+}
+@media screen and (max-width: 768px) {
+    .Header {
+        display: block;
+        height: auto;
+        padding-top: 16px;
+    }
+    .Title {
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+}

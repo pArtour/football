@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import "antd/dist/antd.css";
+import ListOfData from "./components/ListOfData/ListOfData";
+import Calendar from "./components/Calendar/Calendar";
+import Home from "./components/Home/Home";
+import { HeaderComponent as Header } from "./components/Header/Header";
+import { Layout } from "antd";
 
-function App() {
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+const createLeague = () => <Calendar typeOfData={"leagueFixtures"} />
+const createTeams = () => <Calendar typeOfData={"teamFixtures"} />
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout className="layout" style={{ background: "none" }}>
+        <Header />
+        <Layout.Content className="main" style={{ flex: "1 0 auto" }}>
+          <Switch>
+            <Route exact path="/teams/team-:id" component={createTeams}/>
+            <Route exact path="/leagues/league-:id/teams" component={() => <ListOfData typeOfData="teams"/>}/>
+            <Route path="/leagues/league-:id" component={createLeague}/>
+            <Route exact path="/leagues" component={() => <ListOfData typeOfData="leagues"/>} />
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </Layout.Content>
+      </Layout>
+    </Router>
   );
 }
 
